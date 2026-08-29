@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmritiCare — AI-Powered Cognitive Care & Memory Assistance</title>
+  <meta name="description" content="AI-powered cognitive gaming and memory assistance platform designed for elderly dementia patients in the North Eastern Region of India.">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0d7377">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Offline Notification Banner -->
+  <div id="offline-banner" class="offline-banner">
+    📡 You are currently in <strong>Offline Mode</strong>. Activities will be saved on this device and synchronized when network connectivity is restored.
+    <button onclick="simulateSync()" style="background:#fff; color:#d35400; border:none; padding:3px 10px; border-radius:12px; font-weight:700; margin-left:8px; cursor:pointer;">Sync Demo</button>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo">
+        <span class="logo-icon">🧠</span>
+        <div>
+          <span>SmritiCare</span>
+          <span class="logo-tagline" data-i18n="tagline">Helping memories stay connected.</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link active" data-i18n="nav_home">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#problem" class="nav-link">The Challenge</a></li>
+          <li><a href="#features" class="nav-link">Features</a></li>
+          <li><a href="#workflow" class="nav-link">How It Works</a></li>
+          <li><a href="patient.html" class="nav-link">Patient Portal</a></li>
+          <li><a href="caregiver.html" class="nav-link" data-i18n="nav_caregiver">Caregiver</a></li>
+          <li><a href="healthcare.html" class="nav-link" data-i18n="nav_healthcare">Healthcare</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <!-- Multilingual Dropdown -->
+        <div class="lang-selector-wrapper" title="Change Language">
+          <select class="lang-select" aria-label="Select Language">
+            <option value="en">English</option>
+            <option value="hi">हिंदी (Hindi)</option>
+            <option value="bn">বাংলা (Bengali)</option>
+            <option value="as">অসমীয়া (Assamese)</option>
+            <option value="mni">মৈতৈলোন্ (Manipuri)</option>
+            <option value="kha">Khasi</option>
+            <option value="mzo">Mizo</option>
+            <option value="nag">Nagamese</option>
+          </select>
+        </div>
+
+        <!-- Network Pill -->
+        <div id="network-status-pill" class="status-pill">
+          <span class="status-dot"></span> 🟢 Online
+        </div>
+
+        <!-- Login CTA -->
+        <a href="login.html" class="btn btn-primary btn-sm" data-i18n="nav_login">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <span class="section-tag">SIH 2026 Innovation • SIH26003</span>
+        <h1 data-i18n="hero_title">A Smarter Way to Support Memory, Care & Connection</h1>
+        <p class="hero-subtitle" data-i18n="hero_subtitle">
+          An AI-powered cognitive assistance platform designed to help elderly individuals stay mentally active, emotionally connected, and supported in their daily lives.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="patient.html" class="btn btn-primary btn-lg" data-i18n="btn_start_activity">
+            🧠 Start Cognitive Activity
+          </a>
+          <a href="login.html" class="btn btn-outline btn-lg" data-i18n="btn_explore">
+            Explore Demo Portals
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat-item">
+            <strong>8+ Languages</strong>
+            <span>North East Dialects</span>
+          </div>
+          <div class="hero-stat-item">
+            <strong>100% Offline</strong>
+            <span>Local Sync Engine</span>
+          </div>
+          <div class="hero-stat-item">
+            <strong>Adaptive AI</strong>
+            <span>Dynamic Difficulty</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Visual Card -->
+      <div class="hero-visual-card">
+        <div style="background: linear-gradient(135deg, #e6f7f6 0%, #d5f2ea 100%); border-radius: 16px; padding: 2.5rem 1.5rem; margin-bottom: 1rem;">
+          <div style="font-size: 4.5rem; margin-bottom: 0.5rem;">👵🌸🦏</div>
+          <h3 style="color: var(--primary-dark); margin-bottom: 0.3rem;">Culturally Familiar Memory Care</h3>
+          <p style="font-size: 0.95rem; margin: 0; color: var(--text-secondary);">
+            Tailored cognitive games featuring North Eastern heritage, local fruits, folklore, and natural landmarks.
+          </p>
+        </div>
+        <div style="display: flex; justify-content: space-around; font-size: 0.9rem; font-weight: 700; color: var(--primary);">
+          <span>✓ High Contrast UI</span>
+          <span>✓ Voice Interactive</span>
+          <span>✓ Caregiver Alerts</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Section (North Eastern Region Focus) -->
+  <section id="problem" style="padding: 4.5rem 0; background: var(--bg-surface);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">The Challenge</span>
+        <h2>Cognitive Healthcare Barriers in Remote Communities</h2>
+        <p>Elderly dementia patients in the North Eastern Region of India face unique geographic, linguistic, and infrastructural hurdles.</p>
+      </div>
+
+      <div class="grid-4">
+        <div class="card">
+          <div class="feature-icon-box">🧠</div>
+          <h3>Memory Decline</h3>
+          <p>Gradual difficulty remembering familiar family members, routines, daily medications, and local events.</p>
+        </div>
+
+        <div class="card">
+          <div class="feature-icon-box">🏔️</div>
+          <h3>Limited Healthcare Access</h3>
+          <p>Remote hill terrains and rural communities often have scarce access to specialized geriatric neurology clinics.</p>
+        </div>
+
+        <div class="card">
+          <div class="feature-icon-box">👨‍👩‍👧</div>
+          <h3>Caregiver Challenges</h3>
+          <p>Family caregivers need intuitive tools to track cognitive trends, missed medicine reminders, and daily emotional state.</p>
+        </div>
+
+        <div class="card">
+          <div class="feature-icon-box">❤️</div>
+          <h3>Social Isolation</h3>
+          <p>Elderly individuals in nuclear setups experience reduced emotional engagement and cultural memory detachment.</p>
+        </div>
+      </div>
+
+      <!-- NER Regional Banner -->
+      <div style="margin-top: 2.5rem; background: var(--primary-subtle); border-radius: var(--radius-lg); padding: 1.5rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; border-left: 6px solid var(--primary);">
+        <div>
+          <h4 style="margin-bottom: 0.2rem; color: var(--primary-dark);">📍 North Eastern Regional Focus</h4>
+          <p style="margin: 0; font-size: 0.95rem;">Designed for Assam, Meghalaya, Manipur, Mizoram, Nagaland, Tripura, Arunachal Pradesh & Sikkim.</p>
+        </div>
+        <span style="font-size: 1.8rem;">🌿 🍵 🦏 🌺</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution Section (8 Core Features) -->
+  <section id="features" style="padding: 4.5rem 0; background: var(--bg-page);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Our Solution</span>
+        <h2>Comprehensive Digital Caregiving Ecosystem</h2>
+        <p>SmritiCare combines cognitive gaming, smart reminders, regional voice assistance, and triage monitoring into one simple platform.</p>
+      </div>
+
+      <div class="grid-4">
+        <div class="card card-clickable" onclick="window.location.href='games.html'">
+          <div class="feature-icon-box">🧠</div>
+          <h3>Adaptive Cognitive Games</h3>
+          <p>Games that continuously calibrate difficulty based on accuracy, response time, and pattern memory.</p>
+        </div>
+
+        <div class="card card-clickable" onclick="window.location.href='reminders.html'">
+          <div class="feature-icon-box">🔔</div>
+          <h3>Smart Reminders</h3>
+          <p>Audible and visual alerts for medicine schedules, hydration checkpoints, and light daily physical routine.</p>
+        </div>
+
+        <div class="card card-clickable" onclick="window.location.href='patient.html'">
+          <div class="feature-icon-box">🎙️</div>
+          <h3>Voice Assistance</h3>
+          <p>Natural speech recognition and audio readout in English, Hindi, Bengali, Assamese, and regional dialects.</p>
+        </div>
+
+        <div class="card card-clickable">
+          <div class="feature-icon-box">🌐</div>
+          <h3>Multilingual Support</h3>
+          <p>8 North Eastern and national languages ensuring zero linguistic barriers for elderly users.</p>
+        </div>
+
+        <div class="card card-clickable" onclick="window.location.href='caregiver.html'">
+          <div class="feature-icon-box">📊</div>
+          <h3>Cognitive Analytics</h3>
+          <p>Longitudinal 7-day memory trends, domain-specific retention graphs, and response time metrics.</p>
+        </div>
+
+        <div class="card card-clickable" onclick="window.location.href='caregiver.html'">
+          <div class="feature-icon-box">👨‍👩‍👧</div>
+          <h3>Caregiver Monitoring</h3>
+          <p>Instant alerts for missed doses, cognitive performance dips, and daily emotional wellbeing check-ins.</p>
+        </div>
+
+        <div class="card card-clickable">
+          <div class="feature-icon-box">📴</div>
+          <h3>Offline Support</h3>
+          <p>Full offline storage in LocalStorage/PWA cache with auto-synchronization when connectivity returns.</p>
+        </div>
+
+        <div class="card card-clickable" onclick="document.getElementById('privacy-modal').classList.add('open')">
+          <div class="feature-icon-box">🔐</div>
+          <h3>Secure Data</h3>
+          <p>Role-based access boundaries protecting patient personal records and telemetry privacy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works (4-Step Connected Workflow) -->
+  <section id="workflow" style="padding: 4.5rem 0; background: var(--bg-surface); border-top: 1px solid var(--border-color);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">How It Works</span>
+        <h2>The SmritiCare Continuous Care Cycle</h2>
+        <p>A closed-loop system connecting elderly engagement, AI analysis, and caregiver peace of mind.</p>
+      </div>
+
+      <div class="grid-4" style="margin-top: 2rem;">
+        <div class="workflow-step">
+          <div class="step-badge">1</div>
+          <div style="font-size: 2.5rem; margin-bottom: 0.8rem;">👵📱</div>
+          <h3>Patient Interaction</h3>
+          <p>Patient plays culturally familiar cognitive games, tracks hydration, and responds to reminders.</p>
+        </div>
+
+        <div class="workflow-step">
+          <div class="step-badge">2</div>
+          <div style="font-size: 2.5rem; margin-bottom: 0.8rem;">⏱️📈</div>
+          <h3>Telemetry Recording</h3>
+          <p>The system logs response times, accuracy percentages, memory match trials, and mood check-ins.</p>
+        </div>
+
+        <div class="workflow-step">
+          <div class="step-badge">3</div>
+          <div style="font-size: 2.5rem; margin-bottom: 0.8rem;">🤖⚙️</div>
+          <h3>Adaptive AI Engine</h3>
+          <p>Algorithms analyze cognitive trends and dynamically adjust game difficulty (Easy, Medium, Hard).</p>
+        </div>
+
+        <div class="workflow-step">
+          <div class="step-badge">4</div>
+          <div style="font-size: 2.5rem; margin-bottom: 0.8rem;">🩺👨‍👩‍👧</div>
+          <h3>Caregiver & Triage</h3>
+          <p>Caregivers and healthcare workers receive early alerts and monitor multi-patient wellbeing trends.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Role Portals Callout -->
+  <section id="about" style="padding: 4rem 0; background: linear-gradient(135deg, #0d7377 0%, #2b5876 100%); color: #fff;">
+    <div class="container text-center">
+      <h2 style="color: #fff; margin-bottom: 1rem;">Experience SmritiCare Role Portals</h2>
+      <p style="color: #e2e8f0; max-width: 650px; margin: 0 auto 2.5rem; font-size: 1.15rem;">
+        Select an interface below to test the complete SIH26003 prototype workflow in action.
+      </p>
+
+      <div class="grid-3">
+        <div class="card" style="background: rgba(255, 255, 255, 0.95); text-align: center; color: var(--text-primary);">
+          <div style="font-size: 3rem; margin-bottom: 0.5rem;">👵</div>
+          <h3>Elderly Patient</h3>
+          <p>Ultra-simple interface with large buttons, high contrast, daily routine, hydration & brain games.</p>
+          <a href="patient.html" class="btn btn-primary" style="width: 100%;">Open Patient Dashboard ➔</a>
+        </div>
+
+        <div class="card" style="background: rgba(255, 255, 255, 0.95); text-align: center; color: var(--text-primary);">
+          <div style="font-size: 3rem; margin-bottom: 0.5rem;">👨‍👩‍👧</div>
+          <h3>Caregiver Portal</h3>
+          <p>7-day cognitive performance charts, missed reminder alerts, streak tracking & activity logs.</p>
+          <a href="caregiver.html" class="btn btn-secondary" style="width: 100%;">Open Caregiver Portal ➔</a>
+        </div>
+
+        <div class="card" style="background: rgba(255, 255, 255, 0.95); text-align: center; color: var(--text-primary);">
+          <div style="font-size: 3rem; margin-bottom: 0.5rem;">🩺</div>
+          <h3>Healthcare Worker</h3>
+          <p>Multi-patient cohort monitoring, triage filters, risk assessment & tele-care escalation.</p>
+          <a href="healthcare.html" class="btn btn-primary" style="width: 100%; background: #28a745;">Open Healthcare Portal ➔</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Data Protection Modal -->
+  <div id="privacy-modal" class="modal-backdrop">
+    <div class="modal-box">
+      <button class="modal-close-btn" onclick="document.getElementById('privacy-modal').classList.remove('open')">✕</button>
+      <div style="font-size: 3rem; text-align: center; margin-bottom: 0.5rem;">🔐</div>
+      <h2 style="text-align: center;">Your Data, Protected</h2>
+      <p class="text-muted text-center">SmritiCare respects patient confidentiality and regional data sovereignty.</p>
+      
+      <div style="display: grid; gap: 0.8rem; margin: 1.5rem 0;">
+        <div style="background: var(--bg-subtle); padding: 0.8rem 1rem; border-radius: 8px;">
+          <strong>🛡️ Role-Based Access Control:</strong> Strict separation between patient, caregiver, and clinician views.
+        </div>
+        <div style="background: var(--bg-subtle); padding: 0.8rem 1rem; border-radius: 8px;">
+          <strong>📱 Local Offline Storage:</strong> Activity data is stored locally first on device before optional cloud sync.
+        </div>
+        <div style="background: var(--bg-subtle); padding: 0.8rem 1rem; border-radius: 8px;">
+          <strong>☁️ Secure Synchronization:</strong> Encrypted telemetry transfer during connected sessions.
+        </div>
+      </div>
+
+      <button class="btn btn-primary btn-lg" style="width: 100%;" onclick="document.getElementById('privacy-modal').classList.remove('open')">I Understand</button>
+    </div>
+  </div>
+
+  <!-- Floating Accessibility Button & Panel -->
+  <button id="a11y-fab-btn" class="a11y-fab" title="Accessibility Options" aria-label="Accessibility Options">♿</button>
+  <div id="a11y-panel" class="a11y-panel">
+    <h3 style="margin-bottom: 0.75rem; color: var(--primary);">♿ Accessibility</h3>
+    <div class="a11y-option-row">
+      <label for="a11y-chk-large-text"><strong>Larger Text Size</strong></label>
+      <input type="checkbox" id="a11y-chk-large-text" style="width: 22px; height: 22px; cursor: pointer;">
+    </div>
+    <div class="a11y-option-row">
+      <label for="a11y-chk-contrast"><strong>High Contrast Mode</strong></label>
+      <input type="checkbox" id="a11y-chk-contrast" style="width: 22px; height: 22px; cursor: pointer;">
+    </div>
+    <div class="a11y-option-row">
+      <label for="a11y-chk-motion"><strong>Reduce Motion</strong></label>
+      <input type="checkbox" id="a11y-chk-motion" style="width: 22px; height: 22px; cursor: pointer;">
+    </div>
+    <div style="margin-top: 1rem; text-align: right;">
+      <button class="btn btn-sm btn-primary" onclick="A11Y.togglePanel()">Done</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>🧠 SmritiCare</h3>
+          <p class="footer-tagline">AI-Powered Cognitive Care & Memory Assistance</p>
+          <p style="font-size: 0.88rem; color: #94a3b8;">
+            Designed for inclusive digital healthcare and elderly dementia support in the North Eastern Region of India.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="patient.html">Patient Portal</a></li>
+            <li><a href="games.html">Cognitive Games</a></li>
+            <li><a href="reminders.html">Reminders</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Portals</h4>
+          <ul class="footer-links">
+            <li><a href="caregiver.html">Caregiver Dashboard</a></li>
+            <li><a href="healthcare.html">Healthcare Dashboard</a></li>
+            <li><a href="login.html">Demo Login</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Inclusivity & Support</h4>
+          <p style="font-size: 0.88rem; color: #94a3b8; margin-bottom: 0.75rem;">
+            Multilingual support for Assamese, Bengali, Manipuri, Khasi, Mizo, Nagamese, Hindi & English.
+          </p>
+          <button class="btn btn-sm btn-outline" style="color: #fff; border-color: #94a3b8;" onclick="A11Y.togglePanel()">
+            ♿ Open Accessibility Settings
+          </button>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 SmritiCare • Smart India Hackathon Prototype (SIH26003)</span>
+        <span>Designed for inclusive digital healthcare.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

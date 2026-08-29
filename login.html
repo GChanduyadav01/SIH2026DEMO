@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login & Role Selection — SmritiCare</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body style="background: linear-gradient(135deg, #e6f7f6 0%, #f1f8fc 100%); min-height: 100vh; display: flex; flex-direction: column;">
+
+  <!-- Header Minimal -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo">
+        <span class="logo-icon">🧠</span>
+        <span>SmritiCare</span>
+      </a>
+      <div class="header-actions">
+        <select class="lang-select" aria-label="Select Language">
+          <option value="en">English</option>
+          <option value="hi">हिंदी</option>
+          <option value="bn">বাংলা</option>
+          <option value="as">অসমীয়া</option>
+          <option value="mni">মৈতৈলোন্</option>
+          <option value="kha">Khasi</option>
+          <option value="mzo">Mizo</option>
+          <option value="nag">Nagamese</option>
+        </select>
+        <a href="index.html" class="btn btn-outline btn-sm">← Back to Home</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Login Card Container -->
+  <main style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 2.5rem 1rem;">
+    <div class="card" style="max-width: 480px; width: 100%; padding: 2.5rem 2rem; box-shadow: var(--shadow-lg); border-radius: var(--radius-xl);">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <div style="font-size: 3rem; margin-bottom: 0.5rem;">🔐</div>
+        <h2>Welcome Back to SmritiCare</h2>
+        <p class="text-muted" style="margin: 0;">Select your role to access the personalized portal</p>
+      </div>
+
+      <!-- Quick Demo Role Tabs -->
+      <div style="margin-bottom: 1.5rem;">
+        <label style="font-weight: 700; font-size: 0.95rem; display: block; margin-bottom: 0.5rem;">Select Your Role:</label>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem;">
+          <button type="button" class="btn btn-outline role-tab-btn active" data-role="patient" style="padding: 0.7rem 0.5rem; font-size: 0.95rem;">
+            👵 Patient
+          </button>
+          <button type="button" class="btn btn-outline role-tab-btn" data-role="caregiver" style="padding: 0.7rem 0.5rem; font-size: 0.95rem;">
+            👨‍👩‍👧 Caregiver
+          </button>
+          <button type="button" class="btn btn-outline role-tab-btn" data-role="healthcare" style="padding: 0.7rem 0.5rem; font-size: 0.95rem;">
+            🩺 Healthcare
+          </button>
+          <button type="button" class="btn btn-outline role-tab-btn" data-role="admin" style="padding: 0.7rem 0.5rem; font-size: 0.95rem;">
+            🛡️ Admin
+          </button>
+        </div>
+      </div>
+
+      <!-- Simulated Form -->
+      <form id="login-form">
+        <div style="margin-bottom: 1.2rem;">
+          <label for="login-identifier" style="display: block; font-weight: 600; margin-bottom: 0.4rem; font-size: 0.95rem;">
+            Email or Registered Mobile:
+          </label>
+          <input type="text" id="login-identifier" value="ananya.das@smriticare.ner" required
+            style="width: 100%; padding: 0.8rem 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 1rem;">
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+          <label for="login-password" style="display: block; font-weight: 600; margin-bottom: 0.4rem; font-size: 0.95rem;">
+            PIN / Password:
+          </label>
+          <input type="password" id="login-password" value="••••••••" required
+            style="width: 100%; padding: 0.8rem 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 1rem;">
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin-bottom: 1rem;">
+          Enter Portal ➔
+        </button>
+      </form>
+
+      <!-- Demo Accounts Direct Jump -->
+      <div style="background: var(--bg-subtle); padding: 1rem; border-radius: var(--radius-md); margin-top: 1rem;">
+        <div style="font-weight: 700; font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.5rem; text-align: center;">
+          ⚡ SIH Presentation One-Click Demo
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+          <button class="btn btn-sm btn-outline" onclick="jumpToRole('patient')" style="background: #fff;">
+            👵 Launch Patient Dashboard (Mrs. Das)
+          </button>
+          <button class="btn btn-sm btn-outline" onclick="jumpToRole('caregiver')" style="background: #fff;">
+            👨‍👩‍👧 Launch Caregiver Analytics
+          </button>
+          <button class="btn btn-sm btn-outline" onclick="jumpToRole('healthcare')" style="background: #fff;">
+            🩺 Launch Healthcare Multi-Patient Triage
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer" style="padding: 1.5rem 0; text-align: center; font-size: 0.85rem;">
+    <div class="container">
+      © 2026 SmritiCare • Smart India Hackathon Prototype (SIH26003)
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    let currentSelectedRole = 'patient';
+    const roleBtns = document.querySelectorAll('.role-tab-btn');
+    const inputIdentifier = document.getElementById('login-identifier');
+
+    const roleEmails = {
+      patient: 'ananya.das@smriticare.ner (Mrs. Ananya Das)',
+      caregiver: 'priya.das@familycare.in (Family Caregiver)',
+      healthcare: 'dr.barua@gmch.assam.gov.in (Community Health Officer)',
+      admin: 'admin@smriticare.gov.in (NER State Health Admin)'
+    };
+
+    roleBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        roleBtns.forEach(b => b.classList.remove('active', 'btn-primary'));
+        btn.classList.add('active');
+        currentSelectedRole = btn.getAttribute('data-role');
+        if (inputIdentifier) inputIdentifier.value = roleEmails[currentSelectedRole] || 'user@smriticare.ner';
+      });
+    });
+
+    document.getElementById('login-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      jumpToRole(currentSelectedRole);
+    });
+
+    function jumpToRole(role) {
+      if (role === 'patient') window.location.href = 'patient.html';
+      else if (role === 'caregiver') window.location.href = 'caregiver.html';
+      else if (role === 'healthcare') window.location.href = 'healthcare.html';
+      else if (role === 'admin') window.location.href = 'healthcare.html';
+      else window.location.href = 'patient.html';
+    }
+  </script>
+</body>
+</html>

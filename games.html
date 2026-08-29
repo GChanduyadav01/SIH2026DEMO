@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cognitive Games & Memory Activities — SmritiCare</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="patient-page">
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="patient.html" class="brand-logo">
+        <span class="logo-icon">🧠</span>
+        <div>
+          <span>SmritiCare</span>
+          <span class="logo-tagline" data-i18n="tagline">Helping memories stay connected.</span>
+        </div>
+      </a>
+
+      <nav aria-label="Games Navigation">
+        <ul class="nav-links">
+          <li><a href="patient.html" class="nav-link" data-i18n="nav_home">🏠 Home</a></li>
+          <li><a href="games.html" class="nav-link active" data-i18n="nav_games">🧠 Games</a></li>
+          <li><a href="reminders.html" class="nav-link" data-i18n="nav_reminders">🔔 Reminders</a></li>
+          <li><a href="caregiver.html" class="nav-link" data-i18n="nav_caregiver">👨‍👩‍👧 Caregiver View</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <select class="lang-select" aria-label="Select Language">
+          <option value="en">English</option>
+          <option value="hi">हिंदी</option>
+          <option value="bn">বাংলা</option>
+          <option value="as">অসমীয়া</option>
+          <option value="mni">মৈতৈলোন্</option>
+          <option value="kha">Khasi</option>
+          <option value="mzo">Mizo</option>
+          <option value="nag">Nagamese</option>
+        </select>
+        <div id="network-status-pill" class="status-pill">
+          <span class="status-dot"></span> 🟢 Online
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Games Hub -->
+  <main style="padding: 2rem 0 4rem;">
+    <div class="container container-narrow">
+      
+      <!-- Top Title & Navigation Back -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h1 style="margin-bottom: 0.2rem;">Choose an Activity 🧠</h1>
+          <p class="text-muted" style="margin: 0; font-size: 1.05rem;">
+            Simple, joyful cognitive exercises designed for focus, memory, and everyday confidence.
+          </p>
+        </div>
+        <a href="patient.html" class="btn btn-outline">← Back to Home</a>
+      </div>
+
+      <!-- AI Adaptive Difficulty Container (Injected by JS) -->
+      <div id="ai-adaptive-container">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Games List Grid -->
+      <div style="display: grid; gap: 1.5rem; margin-top: 1.5rem;">
+        
+        <!-- Game 1: Memory Match (Featured) -->
+        <div class="card" style="border: 2px solid var(--primary); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+          <div style="display: flex; align-items: center; gap: 1.5rem;">
+            <div style="font-size: 3.5rem; background: var(--primary-subtle); width: 85px; height: 85px; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center;">
+              🌸
+            </div>
+            <div>
+              <span class="status-badge active-status" style="margin-bottom: 0.4rem;">🌟 Recommended Today</span>
+              <h2 style="margin: 0.2rem 0;">1. Memory Match</h2>
+              <p class="text-muted" style="margin-bottom: 0.3rem; font-size: 1.05rem;">
+                Match culturally familiar pairs of North Eastern flora, tea leaves, and instruments.
+              </p>
+              <div style="font-size: 0.9rem; font-weight: 700; color: var(--primary);">
+                Difficulty: Easy / Medium / Hard • Improves visual recall
+              </div>
+            </div>
+          </div>
+          <a href="memory-game.html" class="btn btn-primary btn-lg" style="font-size: 1.2rem; padding: 0.9rem 2rem;">
+            ▶ Play Now
+          </a>
+        </div>
+
+        <!-- Game 2: Pattern Recognition -->
+        <div class="card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+          <div style="display: flex; align-items: center; gap: 1.5rem;">
+            <div style="font-size: 3.5rem; background: var(--info-light); width: 85px; height: 85px; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center;">
+              🧩
+            </div>
+            <div>
+              <h2 style="margin: 0.2rem 0;">2. Pattern Recognition</h2>
+              <p class="text-muted" style="margin-bottom: 0.3rem; font-size: 1.05rem;">
+                Identify sequential patterns and find the missing symbol in line.
+              </p>
+              <div style="font-size: 0.9rem; font-weight: 700; color: var(--info);">
+                Logical thinking & reasoning enhancement
+              </div>
+            </div>
+          </div>
+          <button id="btn-game-pattern" class="btn btn-outline btn-lg" style="font-size: 1.15rem; padding: 0.9rem 2rem;">
+            ▶ Play
+          </button>
+        </div>
+
+        <!-- Game 3: Object Recognition -->
+        <div class="card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+          <div style="display: flex; align-items: center; gap: 1.5rem;">
+            <div style="font-size: 3.5rem; background: #e8f7ec; width: 85px; height: 85px; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center;">
+              🦏
+            </div>
+            <div>
+              <h2 style="margin: 0.2rem 0;">3. Object Recognition</h2>
+              <p class="text-muted" style="margin-bottom: 0.3rem; font-size: 1.05rem;">
+                Recognize iconic wildlife, traditional utensils, and handicrafts of the North East.
+              </p>
+              <div style="font-size: 0.9rem; font-weight: 700; color: var(--success);">
+                Semantic memory & naming recall
+              </div>
+            </div>
+          </div>
+          <button id="btn-game-object" class="btn btn-outline btn-lg" style="font-size: 1.15rem; padding: 0.9rem 2rem;">
+            ▶ Play
+          </button>
+        </div>
+
+        <!-- Game 4: Daily Routine Recall -->
+        <div class="card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+          <div style="display: flex; align-items: center; gap: 1.5rem;">
+            <div style="font-size: 3.5rem; background: var(--warning-light); width: 85px; height: 85px; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center;">
+              📅
+            </div>
+            <div>
+              <h2 style="margin: 0.2rem 0;">4. Daily Routine Recall</h2>
+              <p class="text-muted" style="margin-bottom: 0.3rem; font-size: 1.05rem;">
+                Arrange daily activities and healthy habits in chronological order.
+              </p>
+              <div style="font-size: 0.9rem; font-weight: 700; color: #d35400;">
+                Executive function & daily routine confidence
+              </div>
+            </div>
+          </div>
+          <button id="btn-game-routine" class="btn btn-outline btn-lg" style="font-size: 1.15rem; padding: 0.9rem 2rem;">
+            ▶ Play
+          </button>
+        </div>
+
+        <!-- Game 5: Attention Challenge -->
+        <div class="card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+          <div style="display: flex; align-items: center; gap: 1.5rem;">
+            <div style="font-size: 3.5rem; background: var(--accent-light); width: 85px; height: 85px; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center;">
+              👁️
+            </div>
+            <div>
+              <h2 style="margin: 0.2rem 0;">5. Attention Challenge</h2>
+              <p class="text-muted" style="margin-bottom: 0.3rem; font-size: 1.05rem;">
+                Spot the unique or different fruit/object among similar items.
+              </p>
+              <div style="font-size: 0.9rem; font-weight: 700; color: var(--accent);">
+                Visual vigilance & selective attention
+              </div>
+            </div>
+          </div>
+          <button id="btn-game-attention" class="btn btn-outline btn-lg" style="font-size: 1.15rem; padding: 0.9rem 2rem;">
+            ▶ Play
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Mini-Game Interactive Modal Container -->
+  <div id="game-modal-backdrop" class="modal-backdrop">
+    <div class="modal-box">
+      <button id="game-modal-close" class="modal-close-btn">✕</button>
+      <div id="game-modal-content">
+        <!-- Injected by js/games.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Accessibility Button & Panel -->
+  <button id="a11y-fab-btn" class="a11y-fab" title="Accessibility Options">♿</button>
+  <div id="a11y-panel" class="a11y-panel">
+    <h3 style="margin-bottom: 0.75rem; color: var(--primary);">♿ Accessibility</h3>
+    <div class="a11y-option-row">
+      <label for="a11y-chk-large-text"><strong>Larger Text Size</strong></label>
+      <input type="checkbox" id="a11y-chk-large-text" style="width: 22px; height: 22px; cursor: pointer;">
+    </div>
+    <div class="a11y-option-row">
+      <label for="a11y-chk-contrast"><strong>High Contrast Mode</strong></label>
+      <input type="checkbox" id="a11y-chk-contrast" style="width: 22px; height: 22px; cursor: pointer;">
+    </div>
+    <div class="a11y-option-row">
+      <label for="a11y-chk-motion"><strong>Reduce Motion</strong></label>
+      <input type="checkbox" id="a11y-chk-motion" style="width: 22px; height: 22px; cursor: pointer;">
+    </div>
+    <div style="margin-top: 1rem; text-align: right;">
+      <button class="btn btn-sm btn-primary" onclick="A11Y.togglePanel()">Done</button>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <nav class="patient-bottom-nav">
+    <div class="bottom-nav-grid">
+      <a href="patient.html" class="bottom-nav-item">
+        <span class="nav-icon">🏠</span>
+        <span>Home</span>
+      </a>
+      <a href="games.html" class="bottom-nav-item active">
+        <span class="nav-icon">🧠</span>
+        <span>Games</span>
+      </a>
+      <a href="reminders.html" class="bottom-nav-item">
+        <span class="nav-icon">🔔</span>
+        <span>Reminders</span>
+      </a>
+      <a href="caregiver.html" class="bottom-nav-item">
+        <span class="nav-icon">👨‍👩‍👧</span>
+        <span>Caregiver</span>
+      </a>
+    </div>
+  </nav>
+
+  <script src="js/main.js"></script>
+  <script src="js/games.js"></script>
+</body>
+</html>

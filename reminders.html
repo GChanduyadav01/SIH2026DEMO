@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Reminders & Daily Schedule — SmritiCare</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="patient-page">
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="patient.html" class="brand-logo">
+        <span class="logo-icon">🧠</span>
+        <div>
+          <span>SmritiCare</span>
+          <span class="logo-tagline" data-i18n="tagline">Helping memories stay connected.</span>
+        </div>
+      </a>
+
+      <nav aria-label="Reminders Navigation">
+        <ul class="nav-links">
+          <li><a href="patient.html" class="nav-link" data-i18n="nav_home">🏠 Home</a></li>
+          <li><a href="games.html" class="nav-link" data-i18n="nav_games">🧠 Games</a></li>
+          <li><a href="reminders.html" class="nav-link active" data-i18n="nav_reminders">🔔 Reminders</a></li>
+          <li><a href="caregiver.html" class="nav-link" data-i18n="nav_caregiver">👨‍👩‍👧 Caregiver View</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <select class="lang-select" aria-label="Select Language">
+          <option value="en">English</option>
+          <option value="hi">हिंदी</option>
+          <option value="bn">বাংলা</option>
+          <option value="as">অসমীয়া</option>
+          <option value="mni">মৈতৈলোন্</option>
+          <option value="kha">Khasi</option>
+          <option value="mzo">Mizo</option>
+          <option value="nag">Nagamese</option>
+        </select>
+        <div id="network-status-pill" class="status-pill">
+          <span class="status-dot"></span> 🟢 Online
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Reminders Content -->
+  <main style="padding: 2rem 0 4rem;">
+    <div class="container container-narrow">
+      
+      <!-- Top Title & Add Button -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h1 style="margin-bottom: 0.2rem;">My Reminders 🔔</h1>
+          <p class="text-muted" style="margin: 0; font-size: 1.05rem;">
+            Never miss medications, hydration goals, or joyful daily activities.
+          </p>
+        </div>
+        <button id="btn-open-add-reminder" class="btn btn-primary btn-lg">
+          + Add Reminder
+        </button>
+      </div>
+
+      <!-- Filter Buttons Bar -->
+      <div class="filter-tabs" style="margin-bottom: 1.8rem;">
+        <button class="filter-tab-btn reminder-filter-btn active" data-filter="all">All Reminders</button>
+        <button class="filter-tab-btn reminder-filter-btn" data-filter="medicine">💊 Medicine</button>
+        <button class="filter-tab-btn reminder-filter-btn" data-filter="hydration">💧 Hydration</button>
+        <button class="filter-tab-btn reminder-filter-btn" data-filter="activity">🚶 Activity</button>
+        <button class="filter-tab-btn reminder-filter-btn" data-filter="appointment">📅 Appointments</button>
+      </div>
+
+      <!-- Reminders List Container (Injected by js/reminders.js) -->
+      <div id="reminders-list-container">
+        <!-- Rendered by JS -->
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Add Reminder Modal -->
+  <div id="add-reminder-modal" class="modal-backdrop">
+    <div class="modal-box">
+      <button id="btn-close-add-reminder" class="modal-close-btn">✕</button>
+      <h2 style="margin-bottom: 0.5rem;">Schedule New Reminder</h2>
+      <p class="text-muted" style="margin-bottom: 1.5rem;">Add a helpful notification for Mrs. Das.</p>
+
+      <form id="form-add-reminder">
+        <div style="margin-bottom: 1.2rem;">
+          <label for="input-reminder-title" style="display: block; font-weight: 700; margin-bottom: 0.4rem;">
+            Reminder Title:
+          </label>
+          <input type="text" id="input-reminder-title" placeholder="e.g. Evening Ayurvedic Tea / Blood Pressure Pill" required
+            style="width: 100%; padding: 0.8rem 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 1rem;">
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+          <div>
+            <label for="input-reminder-time" style="display: block; font-weight: 700; margin-bottom: 0.4rem;">
+              Time:
+            </label>
+            <input type="text" id="input-reminder-time" placeholder="e.g. 04:30 PM" required
+              style="width: 100%; padding: 0.8rem 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 1rem;">
+          </div>
+
+          <div>
+            <label for="input-reminder-category" style="display: block; font-weight: 700; margin-bottom: 0.4rem;">
+              Category:
+            </label>
+            <select id="input-reminder-category" class="patient-select-dropdown" style="margin-top: 0; padding: 0.8rem;">
+              <option value="medicine">💊 Medicine</option>
+              <option value="hydration">💧 Hydration</option>
+              <option value="activity">🚶 Activity / Walk</option>
+              <option value="appointment">📅 Doctor Visit</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+          ✓ Save Reminder
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Floating Accessibility Button & Panel -->
+  <button id="a11y-fab-btn" class="a11y-fab" title="Accessibility Options">♿</button>
+  <div id="a11y-panel" class="a11y-panel">
+    <h3 style="margin-bottom: 0.75rem; color: var(--primary);">♿ Accessibility</h3>
+    <div class="a11y-option-row">
+      <label for="a11y-chk-large-text"><strong>Larger Text Size</strong></label>
+      <input type="checkbox" id="a11y-chk-large-text" style="width: 22px; height: 22px; cursor: pointer;">
+    </div>
+    <div class="a11y-option-row">
+      <label for="a11y-chk-contrast"><strong>High Contrast Mode</strong></label>
+      <input type="checkbox" id="a11y-chk-contrast" style="width: 22px; height: 22px; cursor: pointer;">
+    </div>
+    <div class="a11y-option-row">
+      <label for="a11y-chk-motion"><strong>Reduce Motion</strong></label>
+      <input type="checkbox" id="a11y-chk-motion" style="width: 22px; height: 22px; cursor: pointer;">
+    </div>
+    <div style="margin-top: 1rem; text-align: right;">
+      <button class="btn btn-sm btn-primary" onclick="A11Y.togglePanel()">Done</button>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <nav class="patient-bottom-nav">
+    <div class="bottom-nav-grid">
+      <a href="patient.html" class="bottom-nav-item">
+        <span class="nav-icon">🏠</span>
+        <span>Home</span>
+      </a>
+      <a href="games.html" class="bottom-nav-item">
+        <span class="nav-icon">🧠</span>
+        <span>Games</span>
+      </a>
+      <a href="reminders.html" class="bottom-nav-item active">
+        <span class="nav-icon">🔔</span>
+        <span>Reminders</span>
+      </a>
+      <a href="caregiver.html" class="bottom-nav-item">
+        <span class="nav-icon">👨‍👩‍👧</span>
+        <span>Caregiver</span>
+      </a>
+    </div>
+  </nav>
+
+  <script src="js/main.js"></script>
+  <script src="js/reminders.js"></script>
+</body>
+</html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Dashboard — SmritiCare</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0d7377">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="patient-page">
+
+  <!-- Offline Banner -->
+  <div id="offline-banner" class="offline-banner">
+    📡 You are offline. Activities will be saved locally.
+    <button onclick="simulateSync()" style="background:#fff; color:#d35400; border:none; padding:3px 10px; border-radius:12px; font-weight:700; margin-left:8px; cursor:pointer;">Sync</button>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="patient.html" class="brand-logo">
+        <span class="logo-icon">🧠</span>
+        <div>
+          <span>SmritiCare</span>
+          <span class="logo-tagline" data-i18n="tagline">Helping memories stay connected.</span>
+        </div>
+      </a>
+
+      <!-- Navigation -->
+      <nav aria-label="Patient Navigation">
+        <ul class="nav-links">
+          <li><a href="patient.html" class="nav-link active" data-i18n="nav_home">🏠 Home</a></li>
+          <li><a href="games.html" class="nav-link" data-i18n="nav_games">🧠 Games</a></li>
+          <li><a href="reminders.html" class="nav-link" data-i18n="nav_reminders">🔔 Reminders</a></li>
+          <li><a href="caregiver.html" class="nav-link" data-i18n="nav_caregiver">👨‍👩‍👧 Caregiver View</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Language Selector -->
+        <div class="lang-selector-wrapper">
+          <select class="lang-select" aria-label="Select Language">
+            <option value="en">English</option>
+            <option value="hi">हिंदी</option>
+            <option value="bn">বাংলা</option>
+            <option value="as">অসমীয়া</option>
+            <option value="mni">মৈতৈলোন্</option>
+            <option value="kha">Khasi</option>
+            <option value="mzo">Mizo</option>
+            <option value="nag">Nagamese</option>
+          </select>
+        </div>
+
+        <div id="network-status-pill" class="status-pill">
+          <span class="status-dot"></span> 🟢 Online
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Patient Dashboard Content -->
+  <main style="padding: 2rem 0 4rem;">
+    <div class="container container-narrow">
+
+      <!-- Patient Header Greeting -->
+      <div class="patient-header-greeting">
+        <div>
+          <h1 id="patient-greeting-text" class="greeting-title">Good Morning, Mrs. Das 👋</h1>
+          <p id="patient-date-text" class="greeting-date">Saturday, 29 August 2026</p>
+          <div style="font-size: 1.15rem; opacity: 0.95;" data-i18n="patient_subgreeting">
+            Let's keep your mind active and joyful today.
+          </div>
+        </div>
+        <div style="text-align: right;">
+          <div style="background: rgba(255,255,255,0.2); padding: 0.6rem 1.2rem; border-radius: var(--radius-lg); font-weight: 700;">
+            🔥 5 Day Streak
+          </div>
+        </div>
+      </div>
+
+      <!-- Voice Assistant Widget -->
+      <section class="voice-assistant-card">
+        <h3 style="color: #fff; margin-bottom: 0.3rem;">🎙️ SmritiCare Voice Assistant</h3>
+        <p style="color: rgba(255,255,255,0.9); font-size: 1rem; margin-bottom: 0.8rem;">
+          Tap the microphone or choose a voice command below:
+        </p>
+
+        <button id="voice-mic-trigger" class="voice-mic-btn" title="Tap to Speak" aria-label="Tap to Speak">
+          🎙️
+        </button>
+
+        <div id="voice-response-text" style="font-size: 1.1rem; font-weight: 600; min-height: 28px; color: #fff; background: rgba(0,0,0,0.15); padding: 0.5rem 1rem; border-radius: 20px; display: inline-block;">
+          Tap microphone and ask anything!
+        </div>
+
+        <div class="voice-prompt-chips">
+          <button class="prompt-chip" data-command="Start my brain game">▶ "Start my brain game"</button>
+          <button class="prompt-chip" data-command="When is my medicine?">💊 "When is my medicine?"</button>
+          <button class="prompt-chip" data-command="Show today's routine">📅 "Show today's routine"</button>
+          <button class="prompt-chip" data-command="Remind me to drink water">💧 "Remind me to drink water"</button>
+        </div>
+      </section>
+
+      <!-- 1. Today's Brain Activity Hero Card -->
+      <div class="activity-hero-card">
+        <div class="activity-hero-info">
+          <div class="activity-large-icon">🧠</div>
+          <div>
+            <span class="section-tag" style="margin-bottom: 0.3rem;">Today's Recommended Activity</span>
+            <h2 style="margin-bottom: 0.2rem;" data-i18n="todays_brain_activity">Memory Match (Assam Heritage)</h2>
+            <p style="margin: 0; font-size: 1.05rem;" class="text-muted">
+              Difficulty: <strong style="color: var(--primary);">⭐ Easy / Medium</strong> • 6 pairs
+            </p>
+          </div>
+        </div>
+        <a href="memory-game.html" class="btn btn-primary btn-lg" style="font-size: 1.25rem; padding: 1.1rem 2.2rem;" data-i18n="btn_start">
+          ▶ Start Activity
+        </a>
+      </div>
+
+      <!-- Grid for Hydration & Medicine Reminders -->
+      <div class="grid-2" style="margin-bottom: 2rem;">
+        
+        <!-- Hydration Widget -->
+        <div class="hydration-widget card">
+          <div style="font-size: 2.5rem; margin-bottom: 0.3rem;">💧</div>
+          <h3 data-i18n="hydration_title">Hydration Check</h3>
+          <p class="text-muted" style="margin-bottom: 0.5rem;" data-i18n="drink_water">Stay refreshed with clean water</p>
+          
+          <div id="hydration-glasses-container" class="glasses-grid">
+            <!-- Rendered by JS -->
+          </div>
+
+          <div id="hydration-progress-text" style="font-size: 1.25rem; font-weight: 800; color: var(--primary); margin-bottom: 1rem;">
+            4 / 6 glasses
+          </div>
+
+          <button id="btn-add-water" class="btn btn-primary btn-lg" style="width: 100%;" data-i18n="btn_complete">
+            + Drink Water (Log Glass)
+          </button>
+        </div>
+
+        <!-- Next Medicine Card -->
+        <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; border-left: 6px solid var(--accent);">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span style="font-size: 2.2rem;">💊</span>
+              <span class="status-badge attention-status">Upcoming Dose</span>
+            </div>
+            <h3 style="margin-bottom: 0.3rem;">Blood Pressure Medicine</h3>
+            <p class="text-muted" style="font-size: 1.05rem;">Amlodipine (5mg) — Take with light snack</p>
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent); margin: 0.8rem 0;">
+              ⏰ 10:00 AM
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 0.75rem;">
+            <button class="btn btn-accent btn-lg" style="flex: 1;" onclick="speakText('Blood pressure medicine marked taken for today. Great job Mrs. Das!'); alert('Medicine marked taken! Caregiver notified. ✓');">
+              ✓ Take Pill Now
+            </button>
+            <a href="reminders.html" class="btn btn-outline btn-lg" title="All Reminders">
+              All Reminders
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Emotional Wellbeing Check-In -->
+      <section class="card" style="margin-bottom: 2rem;">
+        <h3 data-i18n="mood_question" style="margin-bottom: 0.3rem;">How are you feeling today?</h3>
+        <p class="text-muted" style="margin-bottom: 1rem;">Tap an emotion to share your mood with your caregiver.</p>
+
+        <div class="mood-picker">
+          <button class="mood-btn" data-mood="😊 Happy">
+            <span class="mood-emoji">😊</span>
+            <span class="mood-label">Happy</span>
+          </button>
+          <button class="mood-btn" data-mood="🙂 Calm">
+            <span class="mood-emoji">🙂</span>
+            <span class="mood-label">Calm</span>
+          </button>
+          <button class="mood-btn" data-mood="😐 Neutral">
+            <span class="mood-emoji">😐</span>
+            <span class="mood-label">Okay</span>
+          </button>
+          <button class="mood-btn" data-mood="😔 Sad">
+            <span class="mood-emoji">😔</span>
+            <span class="mood-label">Sad</span>
+          </button>
+          <button class="mood-btn" data-mood="😟 Worried">
+            <span class="mood-emoji">😟</span>
+            <span class="mood-label">Worried</span>
+          </button>
+        </div>
+
+        <div id="mood-feedback-msg" style="display: none; background: var(--success-light); color: var(--success); padding: 0.8rem 1rem; border-radius: var(--radius-md); font-weight: 700; text-align: center; margin-top: 1rem;">
+          <!-- JS Feedback -->
+        </div>
+      </section>
+
+      <!-- 3. Daily Routine Timeline -->
+      <section class="card" style="margin-bottom: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem;">
+          <h3 style="margin: 0;" data-i18n="routine_title">Today's Daily Routine</h3>
+          <span style="font-weight: 700; color: var(--primary);">August 29</span>
+        </div>
+
+        <ul class="routine-list">
+          <li class="routine-item done">
+            <span class="routine-time">08:00 AM</span>
+            <span class="routine-title">Healthy Breakfast & Assam Warm Tea</span>
+            <button class="btn btn-sm btn-primary routine-check-btn">✓ Completed</button>
+          </li>
+          <li class="routine-item done">
+            <span class="routine-time">10:00 AM</span>
+            <span class="routine-title">Blood Pressure Medicine</span>
+            <button class="btn btn-sm btn-primary routine-check-btn">✓ Completed</button>
+          </li>
+          <li class="routine-item">
+            <span class="routine-time">11:00 AM</span>
+            <span class="routine-title">Brain Activity (Memory Match)</span>
+            <button class="btn btn-sm btn-outline routine-check-btn">Mark Done</button>
+          </li>
+          <li class="routine-item">
+            <span class="routine-time">01:00 PM</span>
+            <span class="routine-title">Nutritious Lunch (Rice, Fish & Veggies)</span>
+            <button class="btn btn-sm btn-outline routine-check-btn">Mark Done</button>
+          </li>
+          <li class="routine-item">
+            <span class="routine-time">05:00 PM</span>
+            <span class="routine-title">Evening Gentle Garden Walk</span>
+            <button class="btn btn-sm btn-outline routine-check-btn">Mark Done</button>
+          </li>
+          <li class="routine-item">
+            <span class="routine-time">08:00 PM</span>
+            <span class="routine-title">Light Dinner & Family Chat</span>
+            <button class="btn btn-sm btn-outline routine-check-btn">Mark Done</button>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 4. Cultural Personalization & Familiarity Section -->
+      <section class="card" style="margin-bottom: 2rem; background: linear-gradient(135deg, #fefbf3 0%, #ffffff 100%);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <div>
+            <span class="section-tag">Familiar & Local</span>
+            <h3 style="margin: 0.2rem 0;">North Eastern Cultural Treasures</h3>
+          </div>
+          <span style="font-size: 2rem;">🌸🌿</span>
+        </div>
+        <p class="text-muted" style="margin-bottom: 1.5rem;">
+          Engage with icons and cultural memories rooted in local traditions.
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.75rem; text-align: center;">
+          <div style="background: var(--bg-surface); padding: 0.8rem 0.4rem; border-radius: 12px; border: 1px solid var(--border-color); cursor: pointer;" onclick="speakText('Fresh Juicy Mango')">
+            <div style="font-size: 2.2rem;">🥭</div>
+            <div style="font-size: 0.82rem; font-weight: 700; margin-top: 0.3rem;">Mango</div>
+          </div>
+          <div style="background: var(--bg-surface); padding: 0.8rem 0.4rem; border-radius: 12px; border: 1px solid var(--border-color); cursor: pointer;" onclick="speakText('Aromatic Joha Rice')">
+            <div style="font-size: 2.2rem;">🍚</div>
+            <div style="font-size: 0.82rem; font-weight: 700; margin-top: 0.3rem;">Rice</div>
+          </div>
+          <div style="background: var(--bg-surface); padding: 0.8rem 0.4rem; border-radius: 12px; border: 1px solid var(--border-color); cursor: pointer;" onclick="speakText('Lotus and Orchids')">
+            <div style="font-size: 2.2rem;">🌸</div>
+            <div style="font-size: 0.82rem; font-weight: 700; margin-top: 0.3rem;">Flowers</div>
+          </div>
+          <div style="background: var(--bg-surface); padding: 0.8rem 0.4rem; border-radius: 12px; border: 1px solid var(--border-color); cursor: pointer;" onclick="speakText('Traditional Bamboo House')">
+            <div style="font-size: 2.2rem;">🏠</div>
+            <div style="font-size: 0.82rem; font-weight: 700; margin-top: 0.3rem;">Home</div>
+          </div>
+          <div style="background: var(--bg-surface); padding: 0.8rem 0.4rem; border-radius: 12px; border: 1px solid var(--border-color); cursor: pointer;" onclick="speakText('Bihu Dhol Folk Music')">
+            <div style="font-size: 2.2rem;">🎵</div>
+            <div style="font-size: 0.82rem; font-weight: 700; margin-top: 0.3rem;">Music</div>
+          </div>
+          <div style="background: var(--bg-surface); padding: 0.8rem 0.4rem; border-radius: 12px; border: 1px solid var(--border-color); cursor: pointer;" onclick="speakText('Kaziranga Rhino Sanctuary')">
+            <div style="font-size: 2.2rem;">🦏</div>
+            <div style="font-size: 0.82rem; font-weight: 700; margin-top: 0.3rem;">Rhino</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Social Engagement (Stay Connected) -->
+      <section class="card" style="margin-bottom: 2rem;">
+        <h3 style="margin-bottom: 0.3rem;">Stay Connected</h3>
+        <p class="text-muted" style="margin-bottom: 1.2rem;">Reach out to loved ones and enjoy soothing memories.</p>
+
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+          <button id="btn-social-call" class="btn btn-outline btn-lg" style="flex-direction: column; padding: 1.2rem 0.5rem; gap: 0.4rem;">
+            <span style="font-size: 2.2rem;">📞</span>
+            <span>Call Family</span>
+          </button>
+
+          <button id="btn-social-music" class="btn btn-outline btn-lg" style="flex-direction: column; padding: 1.2rem 0.5rem; gap: 0.4rem;">
+            <span style="font-size: 2.2rem;">🎵</span>
+            <span>Listen Together</span>
+          </button>
+
+          <button id="btn-social-memories" class="btn btn-outline btn-lg" style="flex-direction: column; padding: 1.2rem 0.5rem; gap: 0.4rem;">
+            <span style="font-size: 2.2rem;">📷</span>
+            <span>View Memories</span>
+          </button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Generic Interactive Modal (for Family Call, Music, Memories) -->
+  <div id="generic-modal-backdrop" class="modal-backdrop">
+    <div class="modal-box">
+      <button id="generic-modal-close" class="modal-close-btn">✕</button>
+      <div id="generic-modal-content">
+        <!-- Injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Accessibility Button & Panel -->
+  <button id="a11y-fab-btn" class="a11y-fab" title="Accessibility Options" aria-label="Accessibility Options">♿</button>
+  <div id="a11y-panel" class="a11y-panel">
+    <h3 style="margin-bottom: 0.75rem; color: var(--primary);">♿ Accessibility</h3>
+    <div class="a11y-option-row">
+      <label for="a11y-chk-large-text"><strong>Larger Text Size</strong></label>
+      <input type="checkbox" id="a11y-chk-large-text" style="width: 22px; height: 22px; cursor: pointer;">
+    </div>
+    <div class="a11y-option-row">
+      <label for="a11y-chk-contrast"><strong>High Contrast Mode</strong></label>
+      <input type="checkbox" id="a11y-chk-contrast" style="width: 22px; height: 22px; cursor: pointer;">
+    </div>
+    <div class="a11y-option-row">
+      <label for="a11y-chk-motion"><strong>Reduce Motion</strong></label>
+      <input type="checkbox" id="a11y-chk-motion" style="width: 22px; height: 22px; cursor: pointer;">
+    </div>
+    <div style="margin-top: 1rem; text-align: right;">
+      <button class="btn btn-sm btn-primary" onclick="A11Y.togglePanel()">Done</button>
+    </div>
+  </div>
+
+  <!-- Mobile / Tablet Bottom Navigation -->
+  <nav class="patient-bottom-nav" aria-label="Mobile Navigation">
+    <div class="bottom-nav-grid">
+      <a href="patient.html" class="bottom-nav-item active">
+        <span class="nav-icon">🏠</span>
+        <span>Home</span>
+      </a>
+      <a href="games.html" class="bottom-nav-item">
+        <span class="nav-icon">🧠</span>
+        <span>Games</span>
+      </a>
+      <a href="reminders.html" class="bottom-nav-item">
+        <span class="nav-icon">🔔</span>
+        <span>Reminders</span>
+      </a>
+      <a href="caregiver.html" class="bottom-nav-item">
+        <span class="nav-icon">👨‍👩‍👧</span>
+        <span>Caregiver</span>
+      </a>
+    </div>
+  </nav>
+
+  <script src="js/main.js"></script>
+  <script src="js/patient.js"></script>
+</body>
+</html>

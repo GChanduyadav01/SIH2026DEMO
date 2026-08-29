@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Match Game — SmritiCare</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="patient-page">
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="games.html" class="brand-logo">
+        <span class="logo-icon">🧠</span>
+        <div>
+          <span>SmritiCare</span>
+          <span class="logo-tagline">Cognitive Activity</span>
+        </div>
+      </a>
+
+      <div class="header-actions">
+        <a href="games.html" class="btn btn-outline btn-sm">← Back to Activities</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Game Section -->
+  <main style="padding: 1.5rem 0 4rem;">
+    <div class="container container-narrow">
+
+      <!-- Game Controls & Stats Bar -->
+      <div class="game-header-bar">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <label for="game-difficulty-select" style="font-weight: 700;">Level:</label>
+          <select id="game-difficulty-select" class="lang-select" style="padding: 0.4rem 1.5rem 0.4rem 0.6rem; font-size: 0.95rem;">
+            <option value="easy">Easy (6 cards)</option>
+            <option value="medium" selected>Medium (12 cards)</option>
+            <option value="hard">Hard (16 cards)</option>
+          </select>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
+          <div class="game-stat-box">
+            <span class="stat-icon">⏱️</span>
+            <div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">TIME</div>
+              <span id="game-timer">00:00</span>
+            </div>
+          </div>
+
+          <div class="game-stat-box">
+            <span class="stat-icon">🔄</span>
+            <div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">MOVES</div>
+              <span id="game-moves">0</span>
+            </div>
+          </div>
+
+          <div class="game-stat-box">
+            <span class="stat-icon">✨</span>
+            <div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">MATCHES</div>
+              <span id="game-matches">0 / 6</span>
+            </div>
+          </div>
+
+          <button id="btn-restart-game" class="btn btn-sm btn-outline" style="border-radius: var(--radius-full);">
+            🔄 Reset
+          </button>
+        </div>
+      </div>
+
+      <!-- Instruction Callout -->
+      <div style="text-align: center; margin-bottom: 1.2rem;">
+        <p style="margin: 0; font-size: 1.1rem; font-weight: 600; color: var(--primary-dark);">
+          Tap two cards to find matching pairs of North Eastern heritage and fruits!
+        </p>
+      </div>
+
+      <!-- Memory Card Grid -->
+      <div id="memory-grid" class="memory-grid" role="region" aria-label="Memory Card Board">
+        <!-- Rendered by js/memory-game.js -->
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Win Celebration Modal -->
+  <div id="win-modal-backdrop" class="modal-backdrop">
+    <div class="modal-box" style="text-align: center;">
+      <div style="font-size: 4.5rem; margin-bottom: 0.5rem; animation: pulse-ring 1s ease;">🎉</div>
+      <h2 style="color: var(--primary); margin-bottom: 0.3rem;">Well Done, Mrs. Das!</h2>
+      <p class="text-muted" style="margin-bottom: 1.5rem; font-size: 1.1rem;">
+        You have successfully completed the Memory Match activity!
+      </p>
+
+      <!-- Score Breakdown Grid -->
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
+        <div style="background: var(--primary-subtle); padding: 1rem; border-radius: 14px;">
+          <div style="font-size: 0.85rem; color: var(--primary-dark); font-weight: 700;">TOTAL SCORE</div>
+          <div id="win-score-val" style="font-size: 2.2rem; font-weight: 800; color: var(--primary);">88</div>
+        </div>
+
+        <div style="background: var(--info-light); padding: 1rem; border-radius: 14px;">
+          <div style="font-size: 0.85rem; color: var(--info); font-weight: 700;">ACCURACY</div>
+          <div id="win-accuracy-val" style="font-size: 2.2rem; font-weight: 800; color: var(--info);">85%</div>
+        </div>
+
+        <div style="background: var(--bg-subtle); padding: 0.8rem; border-radius: 14px;">
+          <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 700;">TIME TAKEN</div>
+          <div id="win-time-val" style="font-size: 1.5rem; font-weight: 700; color: var(--text-primary);">42 sec</div>
+        </div>
+
+        <div style="background: var(--bg-subtle); padding: 0.8rem; border-radius: 14px;">
+          <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 700;">TOTAL MOVES</div>
+          <div id="win-moves-val" style="font-size: 1.5rem; font-weight: 700; color: var(--text-primary);">10</div>
+        </div>
+      </div>
+
+      <!-- AI Adaptive Recommendation Banner -->
+      <div style="background: linear-gradient(135deg, #f0fdf4 0%, #e6f7f6 100%); border: 2px solid #86efac; border-radius: 14px; padding: 1rem; margin-bottom: 1.5rem; text-align: left;">
+        <div style="font-size: 0.85rem; font-weight: 800; color: var(--primary);">🤖 SMRITICARE AI ADAPTIVE INSIGHT:</div>
+        <div id="win-ai-note" style="font-size: 0.95rem; color: var(--text-primary); margin-top: 0.3rem;">
+          Great cognitive stamina! Recommending Medium difficulty for the next session.
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div style="display: flex; gap: 1rem;">
+        <button id="btn-win-play-again" class="btn btn-primary btn-lg" style="flex: 1;">
+          🔄 Play Again
+        </button>
+        <button id="btn-win-back-games" class="btn btn-outline btn-lg" style="flex: 1;">
+          ← Activities Hub
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Accessibility Button & Panel -->
+  <button id="a11y-fab-btn" class="a11y-fab" title="Accessibility Options">♿</button>
+  <div id="a11y-panel" class="a11y-panel">
+    <h3 style="margin-bottom: 0.75rem; color: var(--primary);">♿ Accessibility</h3>
+    <div class="a11y-option-row">
+      <label for="a11y-chk-large-text"><strong>Larger Text Size</strong></label>
+      <input type="checkbox" id="a11y-chk-large-text" style="width: 22px; height: 22px; cursor: pointer;">
+    </div>
+    <div class="a11y-option-row">
+      <label for="a11y-chk-contrast"><strong>High Contrast Mode</strong></label>
+      <input type="checkbox" id="a11y-chk-contrast" style="width: 22px; height: 22px; cursor: pointer;">
+    </div>
+    <div class="a11y-option-row">
+      <label for="a11y-chk-motion"><strong>Reduce Motion</strong></label>
+      <input type="checkbox" id="a11y-chk-motion" style="width: 22px; height: 22px; cursor: pointer;">
+    </div>
+    <div style="margin-top: 1rem; text-align: right;">
+      <button class="btn btn-sm btn-primary" onclick="A11Y.togglePanel()">Done</button>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <nav class="patient-bottom-nav">
+    <div class="bottom-nav-grid">
+      <a href="patient.html" class="bottom-nav-item">
+        <span class="nav-icon">🏠</span>
+        <span>Home</span>
+      </a>
+      <a href="games.html" class="bottom-nav-item active">
+        <span class="nav-icon">🧠</span>
+        <span>Games</span>
+      </a>
+      <a href="reminders.html" class="bottom-nav-item">
+        <span class="nav-icon">🔔</span>
+        <span>Reminders</span>
+      </a>
+      <a href="caregiver.html" class="bottom-nav-item">
+        <span class="nav-icon">👨‍👩‍👧</span>
+        <span>Caregiver</span>
+      </a>
+    </div>
+  </nav>
+
+  <script src="js/main.js"></script>
+  <script src="js/memory-game.js"></script>
+</body>
+</html>

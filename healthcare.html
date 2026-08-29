@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Healthcare Worker Dashboard — SmritiCare</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo">
+        <span class="logo-icon">🧠</span>
+        <div>
+          <span>SmritiCare</span>
+          <span class="logo-tagline">Clinical Triage & Monitoring</span>
+        </div>
+      </a>
+
+      <nav aria-label="Healthcare Navigation">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="patient.html" class="nav-link">Patient View</a></li>
+          <li><a href="caregiver.html" class="nav-link">Caregiver Portal</a></li>
+          <li><a href="healthcare.html" class="nav-link active">Healthcare Worker View</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <div id="network-status-pill" class="status-pill">
+          <span class="status-dot"></span> 🟢 Online
+        </div>
+        <span style="font-size: 0.88rem; font-weight: 700; color: var(--text-secondary);">Dr. Barua (GMCH Assam)</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Healthcare Dashboard Root -->
+  <main id="healthcare-dashboard-root" style="padding: 2rem 0 4rem; flex: 1;">
+    <div class="container container-wide">
+      
+      <!-- Top Title & Regional Summary -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h1 style="margin-bottom: 0.2rem;">Healthcare Worker Monitoring 🩺</h1>
+          <p class="text-muted" style="margin: 0;">
+            North Eastern Region community dementia tracking, clinical triage, and early intervention queue.
+          </p>
+        </div>
+        <div>
+          <button class="btn btn-primary" onclick="alert('Regional cohort telemetry refreshed from district health centers.');">
+            🔄 Refresh Cohort Telemetry
+          </button>
+        </div>
+      </div>
+
+      <!-- Regional Cohort Analytics Summary -->
+      <div class="metrics-summary-grid">
+        <div class="metric-card">
+          <div class="metric-header">
+            <span>TOTAL MONITORED</span>
+            <span>👥</span>
+          </div>
+          <div id="hc-stat-total" class="metric-value">5</div>
+          <div class="metric-trend neutral">NER Active Cohort</div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-header">
+            <span>ATTENTION NEEDED</span>
+            <span>⚠️</span>
+          </div>
+          <div id="hc-stat-attention" class="metric-value" style="color: var(--danger);">2</div>
+          <div class="metric-trend down">Requires clinical follow-up</div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-header">
+            <span>AVG COGNITIVE SCORE</span>
+            <span>📊</span>
+          </div>
+          <div id="hc-stat-avg" class="metric-value">71%</div>
+          <div class="metric-trend up">▲ Stable regional median</div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-header">
+            <span>MEDICINE ADHERENCE</span>
+            <span>💊</span>
+          </div>
+          <div class="metric-value">88%</div>
+          <div class="metric-trend up">▲ High reminder compliance</div>
+        </div>
+      </div>
+
+      <!-- Multi-Patient Cohort Monitoring Section -->
+      <section class="card" style="margin-top: 2rem;">
+        
+        <!-- Controls: Filters and Search -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+          
+          <div class="filter-tabs" style="margin-bottom: 0;">
+            <button class="filter-tab-btn hc-filter-tab active" data-filter="all">All Patients (5)</button>
+            <button class="filter-tab-btn hc-filter-tab" data-filter="attention" style="color: #d35400;">⚠️ Attention Needed (2)</button>
+            <button class="filter-tab-btn hc-filter-tab" data-filter="normal">✓ Stable / Normal (3)</button>
+          </div>
+
+          <div style="min-width: 260px;">
+            <input type="text" id="hc-patient-search" placeholder="🔍 Search patient by name or state..."
+              style="width: 100%; padding: 0.55rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); font-size: 0.95rem;">
+          </div>
+        </div>
+
+        <!-- Patients Data Table -->
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Patient & Location</th>
+                <th>Age</th>
+                <th>Cognitive Score</th>
+                <th>Sessions</th>
+                <th>Last Active</th>
+                <th>Triage Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="hc-patients-table-body">
+              <!-- Populated dynamically by js/dashboard.js -->
+            </tbody>
+          </table>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Patient Drill-Down Modal -->
+  <div id="hc-patient-modal" class="modal-backdrop">
+    <div class="modal-box" style="max-width: 600px;">
+      <button class="modal-close-btn" onclick="document.getElementById('hc-patient-modal').classList.remove('open')">✕</button>
+      <div id="hc-patient-modal-content">
+        <!-- Injected by js/dashboard.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer" style="padding: 1.8rem 0; margin-top: auto;">
+    <div class="container footer-bottom">
+      <span>SmritiCare Healthcare Worker Monitoring Portal • SIH26003</span>
+      <span>Empowering community health workers in North Eastern India.</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
