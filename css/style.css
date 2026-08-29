@@ -1347,6 +1347,147 @@ body.high-contrast .greeting-title {
   color: var(--text-primary);
 }
 
+/* ==========================================================================
+   Cognitive Mini-Games UI (Pattern, Object, Routine, Attention)
+   ========================================================================== */
+
+.game-quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.game-timer-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--bg-subtle);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--primary);
+  border: 1px solid var(--border-color);
+}
+
+.game-progress-badge {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.game-choice-btn {
+  width: 100%;
+  text-align: center;
+  font-size: 1.15rem;
+  font-weight: 600;
+  padding: 1rem 1.2rem;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--border-color);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 56px;
+}
+
+.game-choice-btn:hover:not(:disabled) {
+  border-color: var(--primary-light);
+  background: var(--primary-subtle);
+  transform: translateY(-2px);
+}
+
+.game-choice-btn.correct-choice {
+  background: var(--success-light) !important;
+  border-color: var(--success) !important;
+  color: #1e7e34 !important;
+  font-weight: 800 !important;
+}
+
+.game-choice-btn.incorrect-choice {
+  background: var(--danger-light) !important;
+  border-color: var(--danger) !important;
+  color: #bd2130 !important;
+  font-weight: 700 !important;
+}
+
+.game-choice-btn:disabled {
+  cursor: default;
+}
+
+.game-feedback-banner {
+  padding: 0.9rem 1.2rem;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin: 1.2rem 0;
+  text-align: center;
+  display: none;
+}
+
+.game-feedback-banner.success {
+  display: block;
+  background: var(--success-light);
+  color: var(--success);
+  border: 1px solid #b7e4c7;
+}
+
+.game-feedback-banner.error {
+  display: block;
+  background: var(--danger-light);
+  color: var(--danger);
+  border: 1px solid #f5c6cb;
+}
+
+/* Attention Challenge Grid */
+.attention-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.85rem;
+  max-width: 440px;
+  margin: 1.5rem auto;
+}
+
+.attention-cell {
+  aspect-ratio: 1 / 1;
+  background: var(--bg-surface);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+  user-select: none;
+  min-height: 65px;
+}
+
+.attention-cell:hover:not(.locked) {
+  border-color: var(--primary);
+  transform: scale(1.08);
+  background: var(--primary-subtle);
+}
+
+.attention-cell.cell-correct {
+  border-color: var(--success) !important;
+  background: var(--success-light) !important;
+}
+
+.attention-cell.cell-wrong {
+  border-color: var(--danger) !important;
+  background: var(--danger-light) !important;
+}
+
 /* Accessibility Floating Button & Drawer */
 .a11y-fab {
   position: fixed;
