@@ -231,10 +231,10 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 1.75rem;
   gap: 1rem;
   width: 100%;
-  max-width: 1440px;
+  max-width: 1560px;
   margin: 0 auto;
   box-sizing: border-box;
 }
@@ -242,17 +242,18 @@ p {
 .brand-logo {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.65rem;
   font-size: 1.35rem;
   font-weight: 800;
   color: var(--primary);
   text-decoration: none;
   flex-shrink: 0;
   white-space: nowrap;
+  margin-right: 1.25rem; /* Dedicated clear spacing between Logo/Tagline and Home */
 }
 
 .brand-logo .logo-icon {
-  font-size: 1.75rem;
+  font-size: 1.8rem;
   line-height: 1;
   flex-shrink: 0;
 }
@@ -269,7 +270,7 @@ p {
 .main-navigation {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; /* Aligns items cleanly without left/right overflow spillage */
   flex: 1 1 auto;
   min-width: 0;
 }
@@ -277,7 +278,7 @@ p {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.25rem;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -287,8 +288,8 @@ p {
 .nav-link {
   color: var(--text-secondary);
   font-weight: 600;
-  font-size: 0.92rem;
-  padding: 0.45rem 0.6rem;
+  font-size: 0.9rem;
+  padding: 0.4rem 0.55rem;
   border-radius: var(--radius-sm);
   transition: var(--transition);
   white-space: nowrap; /* Required: prevents navigation items from wrapping */
@@ -304,9 +305,9 @@ p {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.65rem;
   flex-shrink: 0;
-  margin-left: auto;
+  margin-left: 1.25rem; /* Dedicated clear spacing between Healthcare and Language */
 }
 
 /* Language Dropdown */
@@ -1488,25 +1489,30 @@ body.high-contrast .greeting-title {
    Media Queries & Responsiveness
    ========================================================================== */
 
-/* Intermediate Screen Adjustment (1081px - 1280px) */
-@media (max-width: 1280px) and (min-width: 1081px) {
-  .nav-links {
-    gap: 0.2rem;
+/* Intermediate Screen Adjustment (1181px - 1380px) */
+@media (max-width: 1380px) and (min-width: 1181px) {
+  .header-inner {
+    padding: 0.75rem 1.25rem;
+    gap: 0.6rem;
   }
-  .nav-link {
-    font-size: 0.88rem;
-    padding: 0.4rem 0.45rem;
+  .brand-logo {
+    margin-right: 0.75rem;
   }
   .header-actions {
+    margin-left: 0.75rem;
     gap: 0.5rem;
   }
-  .brand-logo .logo-tagline {
-    display: none;
+  .nav-links {
+    gap: 0.15rem;
+  }
+  .nav-link {
+    font-size: 0.86rem;
+    padding: 0.35rem 0.45rem;
   }
 }
 
-/* Tablet & Mobile Breakpoint for Header Navigation (1080px and below) */
-@media (max-width: 1080px) {
+/* Tablet & Mobile Breakpoint for Header Navigation (1180px and below) */
+@media (max-width: 1180px) {
   .mobile-menu-toggle {
     display: flex;
   }
