@@ -11,7 +11,7 @@
 
   <!-- Header -->
   <header class="site-header">
-    <div class="container header-inner">
+    <div class="header-inner">
       <a href="patient.html" class="brand-logo">
         <span class="logo-icon">🧠</span>
         <div>
@@ -20,7 +20,7 @@
         </div>
       </a>
 
-      <nav aria-label="Games Navigation">
+      <nav class="main-navigation" aria-label="Games Navigation">
         <ul class="nav-links">
           <li><a href="patient.html" class="nav-link" data-i18n="nav_home">🏠 Home</a></li>
           <li><a href="games.html" class="nav-link active" data-i18n="nav_games">🧠 Games</a></li>
@@ -30,19 +30,27 @@
       </nav>
 
       <div class="header-actions">
-        <select class="lang-select" aria-label="Select Language">
-          <option value="en">English</option>
-          <option value="hi">हिंदी</option>
-          <option value="bn">বাংলা</option>
-          <option value="as">অসমীয়া</option>
-          <option value="mni">মৈতৈলোন্</option>
-          <option value="kha">Khasi</option>
-          <option value="mzo">Mizo</option>
-          <option value="nag">Nagamese</option>
-        </select>
+        <div class="lang-selector-wrapper">
+          <select class="lang-select" aria-label="Select Language">
+            <option value="en">English</option>
+            <option value="hi">हिंदी</option>
+            <option value="bn">বাংলা</option>
+            <option value="as">অসমীয়া</option>
+            <option value="mni">মৈতৈলোন্</option>
+            <option value="kha">Khasi</option>
+            <option value="mzo">Mizo</option>
+            <option value="nag">Nagamese</option>
+          </select>
+        </div>
         <div id="network-status-pill" class="status-pill">
           <span class="status-dot"></span> 🟢 Online
         </div>
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-menu-btn" class="mobile-menu-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
       </div>
     </div>
   </header>
