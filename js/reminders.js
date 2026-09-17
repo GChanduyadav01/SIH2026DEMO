@@ -1,5 +1,5 @@
 /**
- * SmritiCare - Reminders & Daily Routine Manager
+ * SmritiAI - Reminders & Daily Routine Manager
  * Category filtering, reminder CRUD, status toggling,
  * LocalStorage persistence & Speech audio assistance.
  */

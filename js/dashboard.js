@@ -1,5 +1,5 @@
 /**
- * SmritiCare - Caregiver & Healthcare Worker Dashboards JavaScript
+ * SmritiAI - Caregiver & Healthcare Worker Dashboards JavaScript
  * Patient Switching, Dynamic Metric Calculation, Responsive Canvas Activity Chart,
  * Alert Center & Multi-Patient Triage Management.
  */

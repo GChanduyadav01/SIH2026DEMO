@@ -1,6 +1,6 @@
 {
-  "name": "SmritiCare — AI Cognitive Care & Memory Assistance",
-  "short_name": "SmritiCare",
+  "name": "SmritiAI — AI Cognitive Care & Memory Assistance",
+  "short_name": "SmritiAI",
   "description": "AI-Powered Cognitive Gaming & Memory Assistance Platform for elderly dementia patients in the North Eastern Region of India.",
   "start_url": "./index.html",
   "display": "standalone",

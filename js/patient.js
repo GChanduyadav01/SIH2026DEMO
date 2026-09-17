@@ -1,5 +1,5 @@
 /**
- * SmritiCare - Patient Dashboard JavaScript
+ * SmritiAI - Patient Dashboard JavaScript
  * Elderly-first UX, Hydration, Routine timeline, Voice Assistant,
  * Mood Check-in & Culturally Familiar Memories.
  */

@@ -1,5 +1,5 @@
 /**
- * SmritiCare - Cognitive Games Catalog & AI Adaptive Engine
+ * SmritiAI - Cognitive Games Catalog & AI Adaptive Engine
  * Fully Interactive Games: Pattern Recognition, Object Recognition,
  * Daily Routine Recall, and Attention Challenge.
  *
@@ -44,7 +44,7 @@ function calculateAdaptiveLevel() {
 
   if (avg > 80) {
     level = 'Hard';
-    rationale = `High consistency (${avg}% avg score). SmritiCare AI dynamically stepped up cognitive stimulation.`;
+    rationale = `High consistency (${avg}% avg score). SmritiAI AI dynamically stepped up cognitive stimulation.`;
   } else if (avg >= 55) {
     level = 'Medium';
     rationale = `Steady cognitive baseline (${avg}% avg score). Balanced stimulation recommended to maintain engagement.`;
@@ -73,7 +73,7 @@ function renderAiAdaptiveRecommendation() {
     <div class="ai-adaptive-box">
       <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem;">
         <div>
-          <span class="ai-badge">🤖 SmritiCare AI Engine</span>
+          <span class="ai-badge">🤖 SmritiAI AI Engine</span>
           <h3 style="margin-bottom:0.5rem;">AI-Assisted Adaptive Difficulty</h3>
           <p style="margin-bottom:0.75rem; font-size:0.95rem;">${data.rationale}</p>
         </div>
@@ -148,10 +148,10 @@ function renderResultsScreen(gameName, correctCount, totalQuestions, onPlayAgain
   let recNote = 'Steady focus! Maintaining medium difficulty supports cognitive recall.';
   if (score >= 80) {
     recLevel = 'Hard';
-    recNote = 'Excellent cognitive stamina! SmritiCare AI recommends stepping up to Hard level.';
+    recNote = 'Excellent cognitive stamina! SmritiAI AI recommends stepping up to Hard level.';
   } else if (score < 50) {
     recLevel = 'Easy';
-    recNote = 'Good practice session! SmritiCare AI suggests a gentle pace to build confidence.';
+    recNote = 'Good practice session! SmritiAI AI suggests a gentle pace to build confidence.';
   }
 
   speakText(`Well done Mrs. Das! You answered ${correctCount} out of ${totalQuestions} correctly. Your score is ${score} percent.`);
@@ -177,7 +177,7 @@ function renderResultsScreen(gameName, correctCount, totalQuestions, onPlayAgain
       </div>
 
       <div style="background:linear-gradient(135deg, #f0fdf4 0%, #e6f7f6 100%); border:2px solid #86efac; border-radius:14px; padding:1rem; margin-bottom:1.5rem; text-align:left;">
-        <div style="font-size:0.82rem; font-weight:800; color:var(--primary);">🤖 SMRITICARE AI ADAPTIVE INSIGHT:</div>
+        <div style="font-size:0.82rem; font-weight:800; color:var(--primary);">🤖 SmritiAI AI ADAPTIVE INSIGHT:</div>
         <div style="font-size:0.95rem; color:var(--text-primary); margin-top:0.3rem;">
           Recommended Level: <strong>⭐ ${recLevel}</strong> • ${recNote}
         </div>

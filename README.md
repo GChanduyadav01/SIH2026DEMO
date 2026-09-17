@@ -1,4 +1,4 @@
-# 🧠 SmritiCare (SIH26003)
+# 🧠 SmritiAI (SIH26003)
 ### AI-Powered Cognitive Care & Memory Assistance Platform
 > *"Helping memories stay connected."*
 
@@ -86,10 +86,10 @@ SIH26003/
 
 | Role | Name / Email | Preset Portal |
 | :--- | :--- | :--- |
-| **Patient** | `ananya.das@smriticare.ner` (Mrs. Ananya Das, Age 72, Assam) | `patient.html` |
+| **Patient** | `ananya.das@SmritiAI.ner` (Mrs. Ananya Das, Age 72, Assam) | `patient.html` |
 | **Caregiver** | `priya.das@familycare.in` (Priya Das - Family Caregiver) | `caregiver.html` |
 | **Healthcare Worker**| `dr.barua@gmch.assam.gov.in` (Community Health Officer) | `healthcare.html` |
-| **State Admin** | `admin@smriticare.gov.in` (NER Health Directorate) | `healthcare.html` |
+| **State Admin** | `admin@SmritiAI.gov.in` (NER Health Directorate) | `healthcare.html` |
 
 *(All portals can be accessed directly from `login.html` via one-click demo buttons).*
 
@@ -98,7 +98,7 @@ SIH26003/
 ## 🕹️ 3–5 Minute SIH Presentation Walkthrough
 
 1. **Step 1: Landing Page (`index.html`)**
-   - Introduce the product name **SmritiCare** and highlight the North Eastern Region healthcare challenge.
+   - Introduce the product name **SmritiAI** and highlight the North Eastern Region healthcare challenge.
    - Toggle the language dropdown to **Assamese / Hindi / Bengali** to demonstrate regional inclusivity.
    - Open the **♿ Accessibility Drawer** and demonstrate **High Contrast Mode** and **Larger Text**.
 2. **Step 2: Role Selection & Patient Portal (`patient.html`)**
@@ -109,7 +109,7 @@ SIH26003/
 3. **Step 3: Interactive Cognitive Gaming (`memory-game.html`)**
    - Play the **Memory Match** game: flip culturally familiar cards (🦏 Rhino, 🍵 Assam Tea, 🥁 Bihu Dhol).
    - Show how the timer, moves, matches, and accuracy compute live.
-   - On completion, showcase the **"Well Done!" Win Modal** with the **SmritiCare AI Adaptive Difficulty Recommendation**.
+   - On completion, showcase the **"Well Done!" Win Modal** with the **SmritiAI AI Adaptive Difficulty Recommendation**.
 4. **Step 4: Reminders Hub (`reminders.html`)**
    - Show category filtering (💊 Medicine, 💧 Hydration, 🚶 Activity).
    - Click **"🔊 Speak"** to hear the browser read aloud the medicine schedule.
@@ -148,5 +148,5 @@ SIH26003/
 
 ---
 
-### © 2026 SmritiCare • Smart India Hackathon Prototype (SIH26003)
+### © 2026 SmritiAI • Smart India Hackathon Prototype (SIH26003)
 *Designed with empathy for inclusive digital healthcare in North Eastern India.*

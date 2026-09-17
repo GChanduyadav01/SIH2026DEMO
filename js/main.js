@@ -1,5 +1,5 @@
 /**
- * SmritiCare - Main Core JavaScript
+ * SmritiAI - Main Core JavaScript
  * Global State, LocalStorage Management, Multilingual Dictionary,
  * Accessibility Controller, Offline Sync Simulation & PWA Registration.
  */
@@ -135,7 +135,7 @@ function initializeStorage() {
 // ==========================================
 const TRANSLATIONS = {
   en: {
-    brand_name: "SmritiCare",
+    brand_name: "SmritiAI",
     tagline: "Helping memories stay connected.",
     nav_home: "Home",
     nav_games: "Games",
@@ -267,7 +267,7 @@ const TRANSLATIONS = {
     sync_success: "সফলভাৱে সংৰক্ষণ কৰা হ'ল! ☁️"
   },
   mni: {
-    brand_name: "SmritiCare",
+    brand_name: "SmritiAI",
     tagline: "Ningsingba amadi anouba punsigi panggal.",
     nav_home: "Home",
     nav_games: "Games",
@@ -300,7 +300,7 @@ const TRANSLATIONS = {
     sync_success: "Pumnamak sync toure! ☁️"
   },
   kha: {
-    brand_name: "SmritiCare",
+    brand_name: "SmritiAI",
     tagline: "Ban kynmaw bad pyniasoh ia ki jingmut.",
     nav_home: "Home",
     nav_games: "Jingialehkai",
@@ -333,7 +333,7 @@ const TRANSLATIONS = {
     sync_success: "Lah sync lut! ☁️"
   },
   mzo: {
-    brand_name: "SmritiCare",
+    brand_name: "SmritiAI",
     tagline: "Hriatrengna vawnhimtu.",
     nav_home: "Home",
     nav_games: "Infiamna",
@@ -366,7 +366,7 @@ const TRANSLATIONS = {
     sync_success: "Sync a hlawhtling e! ☁️"
   },
   nag: {
-    brand_name: "SmritiCare",
+    brand_name: "SmritiAI",
     tagline: "Maan laga yaad bhal thakibo karne.",
     nav_home: "Home",
     nav_games: "Khel",
@@ -665,7 +665,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Register PWA Service Worker if supported
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./service-worker.js')
-      .then(() => console.log('SmritiCare Service Worker Registered.'))
+      .then(() => console.log('SmritiAI Service Worker Registered.'))
       .catch((err) => console.log('Service Worker setup skipped or offline:', err));
   }
 });

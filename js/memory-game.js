@@ -1,5 +1,5 @@
 /**
- * SmritiCare - Interactive Memory Match Game (SIH26003)
+ * SmritiAI - Interactive Memory Match Game (SIH26003)
  * Culturally familiar North Eastern symbols, timer, move counter,
  * dynamic scoring, accuracy calculation, LocalStorage sync & AI difficulty recommendation.
  */
@@ -212,13 +212,13 @@ class MemoryGame {
     let aiNote = '';
     if (finalScore >= 85) {
       nextLevel = 'Hard';
-      aiNote = 'Outstanding focus! SmritiCare AI recommends stepping up to Hard level for more memory strength.';
+      aiNote = 'Outstanding focus! SmritiAI AI recommends stepping up to Hard level for more memory strength.';
     } else if (finalScore >= 60) {
       nextLevel = 'Medium';
       aiNote = 'Great steady pace! Continuing with Medium level will maintain cognitive plasticity.';
     } else {
       nextLevel = 'Easy';
-      aiNote = 'Good effort! SmritiCare AI suggests a gentle Easy level for your next round to build confidence.';
+      aiNote = 'Good effort! SmritiAI AI suggests a gentle Easy level for your next round to build confidence.';
     }
 
     // Save to LocalStorage

@@ -1,9 +1,9 @@
 /**
- * SmritiCare - Service Worker for Offline PWA Support
+ * SmritiAI - Service Worker for Offline PWA Support
  * Caches core assets and provides offline fallback for remote areas.
  */
 
-const CACHE_NAME = 'smriticare-v1';
+const CACHE_NAME = 'SmritiAI-v1';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -27,10 +27,10 @@ const ASSETS_TO_CACHE = [
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('[SmritiCare SW] Caching offline assets...');
+      console.log('[SmritiAI SW] Caching offline assets...');
       return cache.addAll(ASSETS_TO_CACHE);
     }).catch(err => {
-      console.log('[SmritiCare SW] Install caching non-critical error:', err);
+      console.log('[SmritiAI SW] Install caching non-critical error:', err);
     })
   );
   self.skipWaiting();
